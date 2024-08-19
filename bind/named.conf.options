@@ -1,0 +1,75 @@
+options {
+		directory "/etc/bind/zones";
+
+    // If there is a firewall between you and nameservers you want
+    // to talk to, you may need to fix the firewall to allow multiple
+    // ports to talk.  See http://www.kb.cert.org/vuls/id/800113
+
+    // If your ISP provided one or more IP addresses for stable
+    // nameservers, you probably want to use them as forwarders.
+    // Uncomment the following block, and insert the addresses replacing
+    // the all-0's placeholder.
+
+    forwarders {
+    1.1.1.1;
+    1.0.0.1;
+    8.8.8.8;
+    8.8.4.4;
+    62.179.1.60;
+    62.179.1.61;
+    62.179.1.62;
+    62.179.1.63;
+    };
+
+    //========================================================================
+    // If BIND logs error messages about the root key being expired,
+    // you will need to update your keys.  See https://www.isc.org/bind-keys
+    //========================================================================
+    dnssec-validation auto;
+
+    auth-nxdomain no;    # conform to RFC1035
+    listen-on-v6 { none; };
+    version "get lost";
+    response-policy { zone "rpz"; };
+    allow-query { any; };
+    notify yes;
+    allow-transfer { 192.168.2.8; };
+    empty-zones-enable no;
+        also-notify { 192.168.2.8; };
+};
+
+logging {
+    channel general {
+        stderr;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+    };
+
+    channel queries {
+        stderr;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+    };
+
+    channel security {
+        stderr;
+        print-time yes;
+        print-category yes;
+        print-severity yes;
+    };
+
+    channel rpz-queries {
+        file "/var/log/bind/rpz.log" versions 10 size 500k;
+        severity info;
+    };
+
+    category default { general; };
+    category general { general; };
+    category config { general; };
+    category network { general; };
+    category queries { queries; };
+    category security { security; };
+    category rpz { rpz-queries; };
+};

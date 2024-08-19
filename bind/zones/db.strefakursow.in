@@ -1,0 +1,33 @@
+$TTL 86400      ; 1 day
+@               IN SOA  ns1.strefakursow.in. ns2.strefakursow.in. (
+                                19860415222343     ; serial
+                                10800              ; refresh (3 hours)
+                                3600               ; retry (1 hour)
+                                604800             ; expire (1 week)
+                                600                ; minimum (10 minutes)
+                                )
+                        NS      ns1.strefakursow.in.
+                        NS      ns2.strefakursow.in.
+                        NS      ns3.strefakursow.in.
+
+$ORIGIN strefakursow.in.
+
+; ### production ### {{{
+; devices {{{
+; HOME strefakursow DNS -
+
+ns1                     A       192.168.2.250
+ns2                     A       192.168.2.250
+ns3                     A       192.168.2.250
+
+; vm, host from lab.
+
+; end: services }}}
+
+; virtual machines {{{
+; dockers and vm
+
+; end: virtual machines }}}
+; end: ### production ### }}}
+
+;# vim: ts=4 sw=4 et ft=bindzone

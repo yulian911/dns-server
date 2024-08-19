@@ -1,0 +1,47 @@
+$TTL 86400      ; 1 day
+@               IN SOA  ns1.koska.in. ns2.koska.in. (
+                                19860415222343     ; serial
+                                10800              ; refresh (3 hours)
+                                3600               ; retry (1 hour)
+                                604800             ; expire (1 week)
+                                600                ; minimum (10 minutes)
+                                )
+                        NS      ns1.koska.in.
+                        NS      ns2.koska.in.
+                        NS      ns3.koska.in.
+
+$ORIGIN koska.in.
+
+; ### production ### {{{
+; devices {{{
+; HOME KOSKA DNS -
+
+ns1                     A       192.168.2.250
+ns2                     A       192.168.2.250
+ns3                     A       192.168.2.250
+
+; network devices
+
+; cloudrouter
+
+; pihole
+
+; docker swarm
+
+; k3s
+
+; vm, host from home env
+
+; vm, host from lab
+
+; other like ps5, xbox, etc
+
+; end: services }}}
+
+; virtual machines {{{
+; dockers and vm
+
+; end: virtual machines }}}
+; end: ### production ### }}}
+
+;# vim: ts=4 sw=4 et ft=bindzone

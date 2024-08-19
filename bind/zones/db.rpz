@@ -1,0 +1,19 @@
+$TTL 600
+@            IN    SOA  localhost. root.localhost.  (
+                          2015112501   ; serial
+                          1h           ; refresh
+                          30m          ; retry
+                          1w           ; expiry
+                          30m )        ; minimum
+                   IN     NS    ns1.koska.in.
+                   IN     NS    ns2.koska.in.
+
+
+; Redirect this site to our internal web server for testing
+www.example.com      CNAME   dns-wifi.koska.in.
+
+; Ads from this network is particularly intrusive
+www.wp.pl            A       192.168.2.251
+
+; Malware site, we must prevent compromised clients
+; from contacting it.
