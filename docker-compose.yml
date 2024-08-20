@@ -4,6 +4,6 @@ services:
     container_name: strefakursow-dns
     image: index.docker.io/piotrskoska/strefakursow-dns:${ARCH_TYPE}
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "5353:53/tcp"
+      - "5353:53/udp"
     restart: unless-stopped
